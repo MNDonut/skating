@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-gzrlnl&ejvld)d85)m2==wi%f+tqvw*7zlcg3lr1r4p^9b_w!%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['skating-cvis.onrender.com']
 
 
 # Application definition
