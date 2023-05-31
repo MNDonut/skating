@@ -11,6 +11,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=13, unique=True)
     city = models.CharField(max_length=128)
     status = models.BooleanField(default=False)
+    birthday = models.DateField(null=True, blank=True)
 
 
 class UserSession(models.Model):
