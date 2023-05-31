@@ -1,4 +1,4 @@
-from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
@@ -61,3 +61,14 @@ class SessionsView(RetrieveUpdateAPIView, CreateAPIView):
         return self.get(request, *args, **kwargs)
 
 
+class GraphView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        data = []
+        for month in range(1, 13):
+            data.append({
+                'month': month,
+                'number': request.user.sessions.filter(date__month=month).count()
+            })
+        return Response(data)
